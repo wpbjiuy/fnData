@@ -112,6 +112,20 @@
 			console.log(data)
 			fnData.setData($('#formData'), data);
 		})
+
+
+		$('[data-name="ar_b"] [data-name-1]').data('getfilter', function(data){
+			data.json = JSON.stringify(data);
+			return data;
+		})
+
+		$('[data-name="ar_b"] [data-name-1] [data-name-2="a"]').data('getfilter', function(data){
+			return data+' 00:00';
+		})
+
+		$('[data-name="ar_b"] [data-name-1] [data-name-2="a"]').data('setfilter', function(data){
+			return data.replace(' 00:00','');
+		})
 	</script>
 </body>
 </html>

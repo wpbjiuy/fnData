@@ -85,12 +85,9 @@ var FnData = (function($){
 
 			var dv = null;
 
-			if(type == 'object'){
+			if(type == 'object' || type == 'array'){
 
-				dv = _self.getObjData($ths, nextDataName, {}, nt+1);
-			}else if(type == 'array'){
-
-				dv = _self.getObjData($ths, nextDataName, [], nt+1);
+				dv = _self.getObjData($ths, nextDataName, type == 'object' ? {} : [], nt+1);
 			}else{
 
 				dv = getVal($ths);
@@ -123,7 +120,7 @@ var FnData = (function($){
 		var type = $ele.attr('type'),
 			_filter = $ele.data('setfilter');
 
-		$.isFunction(_filter) && (v = _filter($ele, v));
+		$.isFunction(_filter) && (v = _filter(v, $ele));
 
 		if(fnIsIpt($ele)){
 
@@ -158,10 +155,7 @@ var FnData = (function($){
 
 			if(!dv) return true;
 
-			if(type == 'object'){
-
-				_self.setObjData($ths, nextDataName, dv, nt+1);
-			}else if(type == 'array'){
+			if(type == 'object' || type == 'array'){
 
 				_self.setObjData($ths, nextDataName, dv, nt+1);
 			}else{
