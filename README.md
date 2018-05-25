@@ -1,4 +1,4 @@
-# 这是一个数据获取复制构造函数 new FnData() #
+# 这是一个数据获取和赋值的构造函数 new FnData() #
 
 本插件依赖于jQuery, 使用前请加载jQuery version:1.5+ 
 ##
